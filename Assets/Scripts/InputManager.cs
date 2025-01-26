@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class InputManager : MonoBehaviour
 {
     public UnityEvent<Vector2> OnMove = new UnityEvent<Vector2>();
+    public UnityEvent OnJump = new UnityEvent();
     // Update is called once per frame
     void Update()
     {
@@ -29,5 +30,10 @@ public class InputManager : MonoBehaviour
         }
 
         OnMove?.Invoke(inputVector);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnJump?.Invoke();
+        }
     }
 }
